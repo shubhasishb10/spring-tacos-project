@@ -12,5 +12,4 @@ class TacoCloudApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-
 }
