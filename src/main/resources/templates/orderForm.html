@@ -29,22 +29,22 @@
                 <h3 class="text-primary">Deliver my taco masterpiece to ...</h3>
                 <div class="form-group pb-2">
                     <label for="name">Name: </label>
-                    <input class="form-control" id="name" type="text" th:field="*{name}"/>
-                    <p style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+                    <input class="form-control" id="name" type="text" th:field="*{deliveryName}"/>
+                    <p style="color:red" th:if="${#fields.hasErrors('deliveryName')}" th:errors="*{deliveryName}"></p>
                 </div>
                 <div class="form-group pb-2">
                     <label for="street">Street address: </label>
-                    <input class="form-control" id="street" type="text" th:field="*{street}"/>
-                    <p style="color:red" th:if="${#fields.hasErrors('street')}" th:errors="*{street}"></p>
+                    <input class="form-control" id="street" type="text" th:field="*{deliveryStreet}"/>
+                    <p style="color:red" th:if="${#fields.hasErrors('deliveryStreet')}" th:errors="*{deliveryStreet}"></p>
                 </div>
                 <div class="form-group pb-2">
                     <label for="city">City: </label>
-                    <input class="form-control" id="city" type="text" th:field="*{city}"/>
-                    <p style="color:red" th:if="${#fields.hasErrors('city')}" th:errors="*{city}"></p>
+                    <input class="form-control" id="city" type="text" th:field="*{deliveryCity}"/>
+                    <p style="color:red" th:if="${#fields.hasErrors('deliveryCity')}" th:errors="*{deliveryCity}"></p>
                 </div>
                 <div class="form-group pb-2">
                     <label for="state">State: </label>
-                    <select id="state" class="form-select" th:field="*{state}">
+                    <select id="state" class="form-select" th:field="*{deliveryState}">
                         <option th:each="s : ${eligibleStates}" th:value="${s}" th:text="${s}">Value</option>
                     </select>
                     <!--<input class="form-control" id="state" type="text" th:field="*{state}"/>
@@ -52,8 +52,8 @@
                 </div>
                 <div class="form-group pb-2">
                     <label for="zip">Zip code: </label>
-                    <input class="form-control" id="zip" type="text" th:field="*{zip}"/>
-                    <p style="color:red" th:if="${#fields.hasErrors('zip')}" th:errors="*{zip}"></p>
+                    <input class="form-control" id="zip" type="text" th:field="*{deliveryZip}"/>
+                    <p style="color:red" th:if="${#fields.hasErrors('deliveryZip')}" th:errors="*{deliveryZip}"></p>
                 </div>
                 <br/>
                 <div class="form-group pb-2">

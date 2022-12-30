@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -13,6 +14,9 @@ import java.util.Objects;
  */
 public class Taco {
 
+    private Long id;
+
+    private Date createdAt;
     @NotNull
     @Size(min = 3, message = "Name must be at least 3 character long")
     private String name;
@@ -35,17 +39,34 @@ public class Taco {
         this.ingredients = ingredients;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Taco)) return false;
         Taco taco = (Taco) o;
-        return getName().equals(taco.getName()) && getIngredients().equals(taco.getIngredients());
+        return getId().equals(taco.getId());
+        //return getName().equals(taco.getName()) && getIngredients().equals(taco.getIngredients());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getName(), getIngredients());
+        return Objects.hash(getId());
     }
 
     @Override
