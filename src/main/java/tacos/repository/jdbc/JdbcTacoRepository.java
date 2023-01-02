@@ -56,9 +56,9 @@ public class JdbcTacoRepository implements TacoRepository {
 
         long tacoId = saveTacoInfo(taco);
         taco.setId(tacoId);
-        for(String ingredientStr : taco.getIngredients()) {
-            Ingredient ingredient = ingredientRepository.findOne(ingredientStr);
-            saveIngredientToTaco(ingredient, tacoId);
+        for(Ingredient ingredient : taco.getIngredients()) {
+            Ingredient savedIngredient = ingredientRepository.findOne(ingredient.getId());
+            saveIngredientToTaco(savedIngredient, tacoId);
         }
         return taco;
     }

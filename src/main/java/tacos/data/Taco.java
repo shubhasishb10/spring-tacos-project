@@ -1,6 +1,12 @@
 package tacos.data;
 
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.PrePersist;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
@@ -12,8 +18,11 @@ import java.util.Objects;
 /**
  * @author Shubhasish
  */
+@Entity
 public class Taco {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private Date createdAt;
@@ -21,7 +30,8 @@ public class Taco {
     @Size(min = 3, message = "Name must be at least 3 character long")
     private String name;
     @Size(min = 1, message = "You must choose at least 1 ingredients")
-    private List<String> ingredients = new ArrayList<>();
+    @ManyToMany(targetEntity = Ingredient.class)
+    private List<Ingredient> ingredients = new ArrayList<>();
 
     public String getName() {
         return name;
@@ -31,11 +41,11 @@ public class Taco {
         this.name = name;
     }
 
-    public List<String> getIngredients() {
+    public List<Ingredient> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(List<String> ingredients) {
+    public void setIngredients(List<Ingredient> ingredients) {
         this.ingredients = ingredients;
     }
 
@@ -75,5 +85,10 @@ public class Taco {
                 "name='" + name + '\'' +
                 ", ingredients=" + ingredients +
                 '}';
+    }
+
+    @PrePersist
+    void createdAt(){
+        this.createdAt = new Date();
     }
 }

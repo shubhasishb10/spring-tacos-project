@@ -1,3 +1,9 @@
+drop table Taco_Order_Tacos;
+drop table Taco_Ingredients;
+drop table Taco_Order;
+drop table Ingredient;
+drop table Taco;
+
 /* Ingredient table */
 create table if not exists Ingredient (
     id varchar(4) not null primary key,
@@ -5,13 +11,13 @@ create table if not exists Ingredient (
     type varchar(10) not null
 );
 /* Taco table */
-create table Taco (
+create table if not exists Taco (
     id identity,
     name varchar(50) not null,
     createdAt timestamp not null
 );
 /* Taco_Ingredients table for one to many mapping between Taco and Ingredients */
-create table Taco_Ingredients (
+create table if not exists Taco_Ingredients (
     taco bigint not null,
     ingredient varchar(4) not null
 );

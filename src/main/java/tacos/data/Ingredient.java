@@ -1,15 +1,26 @@
 package tacos.data;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.Id;
+
 import java.util.Objects;
 
 /**
  * @author Shubhasish
  */
+@Entity
 public class Ingredient {
 
-    private final String id;
-    private final String name;
-    private final Type type;
+    @Id
+    private String id;
+    private String name;
+    @Enumerated(EnumType.STRING)
+    private Type type;
+
+    public Ingredient(){
+    }
 
     public Ingredient(String id, String name, Type type) {
         this.id = id;
@@ -44,6 +55,18 @@ public class Ingredient {
 
     public Type getType() {
         return type;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
     }
 
     @Override

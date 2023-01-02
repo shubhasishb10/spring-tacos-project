@@ -16,8 +16,8 @@ import tacos.data.Ingredient;
 import tacos.data.Ingredient.Type;
 import tacos.data.Order;
 import tacos.data.Taco;
-import tacos.repository.IngredientRepository;
-import tacos.repository.TacoRepository;
+import tacos.repository.jpa.JPAIngredientRepository;
+import tacos.repository.jpa.JPATacoRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,13 +32,13 @@ import java.util.stream.Collectors;
 @SessionAttributes("order")
 public class DesignTacoController {
 
-    private final IngredientRepository ingredientRepository;
-    private final TacoRepository tacoRepository;
+    private final JPAIngredientRepository ingredientRepository;
+    private final JPATacoRepository tacoRepository;
 
     private static final Logger log = LoggerFactory.getLogger(DesignTacoController.class);
     //private static final BiPredicate<Ingredient, Type> FILTER_PREDICATE = ((Ingredient ingredient, Type type) -> ingredient.getType() == type);
     @Autowired
-    public DesignTacoController(IngredientRepository ingredientRepository, TacoRepository tacoRepository) {
+    public DesignTacoController(JPAIngredientRepository ingredientRepository, JPATacoRepository tacoRepository) {
         this.tacoRepository = tacoRepository;
         this.ingredientRepository = ingredientRepository;
     }

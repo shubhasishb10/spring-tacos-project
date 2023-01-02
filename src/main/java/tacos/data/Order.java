@@ -1,11 +1,19 @@
 package tacos.data;
 
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.CreditCardNumber;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -15,8 +23,14 @@ import java.util.Objects;
 /**
  * @author Shubhasish
  */
-public class Order {
+@Entity
+@Table(name = "Taco_Order")
+public class Order implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Date placedAt;
     @NotBlank(message = "Name is required")
@@ -35,6 +49,7 @@ public class Order {
     private String ccExpiration;
     @Digits(integer = 3, fraction = 0, message = "Invalid CVV")
     private String ccCVV;
+    @ManyToMany(targetEntity = Taco.class)
     private List<Taco> tacos = new ArrayList<>();
 
     public String getDeliveryName() {
@@ -129,6 +144,11 @@ public class Order {
         if(taco != null) {
             tacos.add(taco);
         }
+    }
+
+    @PrePersist
+    public void placedAt() {
+        this.placedAt = new Date();
     }
 
     @Override

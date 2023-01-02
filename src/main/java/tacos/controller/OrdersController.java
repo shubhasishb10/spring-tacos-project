@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import tacos.data.Order;
-import tacos.repository.OrderRepository;
+import tacos.repository.jpa.JPAOrderRepository;
 
 /**
  * @author Shubhasish
@@ -24,10 +24,10 @@ import tacos.repository.OrderRepository;
 public class OrdersController {
 
     private static final Logger log = LoggerFactory.getLogger(OrdersController.class);
-    private final OrderRepository orderRepository;
+    private final JPAOrderRepository orderRepository;
 
     @Autowired
-    public OrdersController(OrderRepository orderRepository) {
+    public OrdersController(JPAOrderRepository orderRepository) {
         this.orderRepository = orderRepository;
     }
 

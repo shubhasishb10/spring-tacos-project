@@ -3,9 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Tacos</title>
+    <link rel="stylesheet" th:href="@{/styles.css}">
 </head>
-<body class="container">
-  <h1>Welcome to ...!!!</h1>
-  <img th:src="@{/images/TacoCloud.png}"/>
+<body class="container" style="padding: 0.5%">
+<div class="card text-center" style="width: 50%;margin-left: 25%;border: 2px solid #7bb148;background-color: rgba(171,190,224,0.35)">
+    <img th:src="@{/images/TacoCloud.png}"/>
+    <div class="card-body">
+        <h1 class="text-danger">Welcome to TACOS</h1>
+        <h3><a class="btn btn-lg btn-success" th:href="@{/design}">Design your tacos</a></h3>
+    </div>
+</div>
 </body>
 </html>
