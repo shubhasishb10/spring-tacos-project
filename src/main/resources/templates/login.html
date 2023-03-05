@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tacos</title>
+    <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+<body class="container" style="padding: 0.5%">
+<div class="card text-center"
+     style="width: 50%;margin-left: 25%;border: 2px solid #517c84;background-color: rgba(171,190,224,0.35)">
+    <img th:src="@{/images/TacoCloud.png}"/>
+    <div style="outline: 2px solid #2a2b7f" class="card-body">
+        <h2 class="text-danger">Login</h2>
+        <form method="post" th:action="@{/login}" id="loginForm">
+            <div th:if="${#request.getParameter('error')}">
+                <p style="color: red">Username or password is incorrect</p>
+            </div>
+            <div class="form-group pb-2">
+                <label for="username">Username: </label>
+                <input style="width: 40%;margin-left: 30%;outline: 2px solid #0a53be" class="form-control" id="username" type="text" name="username"/>
+<!--                <p style="color:red" th:if="${#fields.hasErrors('deliveryStreet')}" th:errors="*{deliveryStreet}"></p>-->
+            </div>
+            <div class="form-group pb-2">
+                <label for="password">Password: </label>
+                <input style="width: 40%;margin-left: 30%;outline: 2px solid #0a53be" class="form-control col-lg-offset-4" id="password" type="password" name="password"/>
+<!--                <p style="color:red" th:if="${#fields.hasErrors('deliveryStreet')}" th:errors="*{deliveryStreet}"></p>-->
+            </div>
+            <button class="btn btn-outline-success" type="submit">Login</button>
+        </form>
+        <br/>
+        <h6><a class="btn btn-outline-primary" th:href="@{/register}">New user? Register today!</a></h6>
+    </div>
+</div>
+</body>
+</html>

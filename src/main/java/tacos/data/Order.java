@@ -1,18 +1,20 @@
 package tacos.data;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.PrePersist;
-import jakarta.persistence.Table;
-import jakarta.validation.constraints.Digits;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.CreditCardNumber;
+import tacos.security.domain.DomainUser;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.Table;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -51,6 +53,8 @@ public class Order implements Serializable {
     private String ccCVV;
     @ManyToMany(targetEntity = Taco.class)
     private List<Taco> tacos = new ArrayList<>();
+    @ManyToOne
+    private DomainUser domainUser;
 
     public String getDeliveryName() {
         return deliveryName;
@@ -138,6 +142,14 @@ public class Order implements Serializable {
 
     public void setTacos(List<Taco> tacos) {
         this.tacos = tacos;
+    }
+
+    public DomainUser getDomainUser() {
+        return domainUser;
+    }
+
+    public void setDomainUser(DomainUser domainUser) {
+        this.domainUser = domainUser;
     }
 
     public void addDesign(Taco taco) {

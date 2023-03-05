@@ -1,4 +1,12 @@
-delete from Taco_Order_Tacos;
+/* Insert security details */
+truncate table authorities cascade;
+truncate table users cascade;
+
+insert into users(username, password, enabled) values ('admin', 'admin', true);
+insert into authorities (username, authority) values ('admin', 'ROLE_USER');
+
+
+/*delete from Taco_Order_Tacos;
 delete from Taco_Ingredients;
 delete from Taco;
 delete from Taco_Order;
@@ -13,4 +21,5 @@ insert into Ingredient (id, name, type) values ('LETC', 'Lettuce', 'VEGGIES');
 insert into Ingredient (id, name, type) values ('CHED', 'Cheddar', 'CHEESE');
 insert into Ingredient (id, name, type) values ('JACK', 'Monetory Jack', 'CHEESE');
 insert into Ingredient (id, name, type) values ('SLSA', 'Salsa', 'SAUCE');
-insert into Ingredient (id, name, type) values ('SRCR', 'Sour Cream', 'SAUCE');
+insert into Ingredient (id, name, type) values ('SRCR', 'Sour Cream', 'SAUCE');*/
+

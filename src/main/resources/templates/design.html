@@ -15,12 +15,15 @@
             <img th:src="@{/images/TacoCloud.png}"/>
             <div class="card-body">
                 <h1>Design your tacos!</h1>
+                <form th:action="@{/logout}" method="post">
+                    <input class="btn btn-xs btn-outline-secondary" type="submit" value="Logout">
+                </form>
             </div>
         </div>
     </div>
     <div class="col-sm-6 col-md-6 col-xs-6 ">
         <div class="card" style="padding: 5.5%">
-            <form method="post" th:object="${design}">
+            <form method="post" th:action="@{/design}" th:object="${design}">
                 <div class="grid">
                     <div class="ingredient-group" id="wraps">
                         <h3 class="text-info">Designate your wrap:</h3>

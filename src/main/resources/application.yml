@@ -1,0 +1,44 @@
+server:
+  port: 8443
+  ssl:
+    key-store: file:///C:/Users/shubh/Documents/mykeys.jks
+    key-store-password: letmein
+    key-password: letmein
+spring:
+   application:
+    name: Taco Application
+   datasource:
+     password: admin
+     username: admin
+     driver-class-name: org.postgresql.Driver
+     url: jdbc:postgresql://localhost:5432/tacos
+   thymeleaf:
+     cache: false
+   jpa:
+     show-sql: true
+     defer-datasource-initialization: true
+     hibernate:
+       naming:
+         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+     generate-ddl: true
+   sql:
+     init:
+       mode: always
+logging:
+  level:
+     org:
+       springframework:
+         boot: INFO
+       hibernate:
+         type: TRACE
+  file:
+    path: logs/
+    name: logs/taco-cloud.log
+
+greetings:
+  welcome: Welcome to ${spring.application.name}
+
+tacos:
+  orders:
+    pageSize: 10
+

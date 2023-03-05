@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Taco Registration</title>
+    <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+<body class="container" style="padding: 1%">
+<div class="row">
+    <div class="col-sm-6 col-md-6 col-xs-6">
+        <div class="card text-sm-center">
+            <img th:src="@{/images/TacoCloud.png}"/>
+            <div class="card-body">
+                <h1>Register to create tacos!</h1>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-6 col-xs-6 ">
+        <div class="card" style="padding: 5.5%">
+            <form method="post" th:action="@{/register}" id="registerForm">
+                <div class="card-body grid">
+                    <h3 class="text-primary">Fill in your details...</h3>
+                    <div class="form-group pb-2">
+                        <label for="username">Username: </label>
+                        <input class="form-control" id="username" type="text" name="username"/>
+                        <!--            <p style="color:red" th:if="${#fields.hasErrors('deliveryName')}" th:errors="*{deliveryName}"></p>-->
+                    </div>
+                    <div class="form-group pb-2">
+                        <label for="password">Password: </label>
+                        <input class="form-control" id="password" type="password" name="password"/>
+                        <!--            <p style="color:red" th:if="${#fields.hasErrors('deliveryStreet')}" th:errors="*{deliveryStreet}"></p>-->
+                    </div>
+                    <div class="form-group pb-2">
+                        <label for="confirm">Confirm password: </label>
+                        <input class="form-control" id="confirm" type="text" name="confirm"/>
+                        <!--            <p style="color:red" th:if="${#fields.hasErrors('deliveryCity')}" th:errors="*{deliveryCity}"></p>-->
+                    </div>
+                    <div class="form-group pb-2">
+                        <label for="fullname">Full name: </label>
+                        <input class="form-control" id="fullname" type="text" name="fullName"/>
+                        <!--            <p style="color:red" th:if="${#fields.hasErrors('deliveryName')}" th:errors="*{deliveryName}"></p>-->
+                    </div>
+                    <div class="form-group pb-2">
+                        <label for="street">Street: </label>
+                        <input class="form-control" id="street" type="text" name="street"/>
+                        <!--            <p style="color:red" th:if="${#fields.hasErrors('deliveryStreet')}" th:errors="*{deliveryStreet}"></p>-->
+                    </div>
+                    <div class="form-group pb-2">
+                        <label for="city">City: </label>
+                        <input class="form-control" id="city" type="text" name="city"/>
+                        <!--            <p style="color:red" th:if="${#fields.hasErrors('deliveryCity')}" th:errors="*{deliveryCity}"></p>-->
+                    </div>
+                </div>
+                <div class="form-group pb-2">
+                    <label for="state">State: </label>
+                    <select id="state" class="form-select" name="state">
+                        <option th:each="s : ${eligibleStates}" th:value="${s}" th:text="${s}">Value</option>
+                    </select>
+                    <!--<input class="form-control" id="state" type="text" th:field="*{state}"/>
+                    <p style="color:red" th:if="${#fields.hasErrors('state')}" th:errors="*{state}"></p>-->
+                </div>
+                <div class="form-group pb-2">
+                    <label for="zip">Zip: </label>
+                    <input class="form-control" id="zip" type="text" name="zip"/>
+                    <!--            <p style="color:red" th:if="${#fields.hasErrors('deliveryStreet')}" th:errors="*{deliveryStreet}"></p>-->
+                </div>
+                <div class="form-group pb-2">
+                    <label for="phone">Phone: </label>
+                    <input class="form-control" id="phone" type="text" name="phone"/>
+                    <!--            <p style="color:red" th:if="${#fields.hasErrors('deliveryCity')}" th:errors="*{deliveryCity}"></p>-->
+                </div>
+                <br/>
+                <hr/>
+                <button type="submit" class="btn btn-outline-info">Register</button>
+
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
